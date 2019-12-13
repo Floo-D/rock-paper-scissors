@@ -8,11 +8,17 @@ function playRound(playerSelection, computerSelection) {
     if(choice === computerSelection) {
         return "It's a Draw!...";
     } else if(choice === "paper") {
-        return computerSelection === "rock" ? "You Win! Paper beats Rock" : "You Lose! Scissors beats Paper";
+        return computerSelection === "rock" ? 
+                "You Win! Paper beats Rock" : 
+                "You Lose! Scissors beats Paper";
     } else if(choice === "rock") {
-        return computerSelection === "scissors" ? "You Win! Rock beats Scissors" : "You Lose! Paper beats Rock";
+        return computerSelection === "scissors" ?
+                "You Win! Rock beats Scissors" : 
+                "You Lose! Paper beats Rock";
     } else {
-        return computerSelection === "paper" ? "You Win! Scissors beats Paper" : "You Lose! Rock beats Scissors";
+        return computerSelection === "paper" ? 
+                "You Win! Scissors beats Paper" : 
+                "You Lose! Rock beats Scissors";
     }
 }
 
@@ -20,7 +26,8 @@ function game() {
     let playerPoints = 0;
     let computerPoints = 0;
     for(let i = 0; i < 5; i++){
-        let playerChoice = prompt(`ROUND ${i + 1} : Rock/Paper/Scissors`, "rock");
+        let playerChoice = prompt(`ROUND ${i + 1} :
+                 Rock/Paper/Scissors`, "rock");
         let computerChoice = computerPlay();
         let result = playRound(playerChoice, computerChoice);
         switch(result.substr(4, 4)){
@@ -30,15 +37,17 @@ function game() {
             case "Lose":
                 computerPoints++;
                 break;
-        }
-        console.log(`---------------------ROUND ${i + 1}---------------------\n`);
+        } 
+        console.log(`-------------------ROUND ${i + 1}---------------------\n`);
         console.log(result);
-        console.log(`Player: ${playerPoints} point(s).\nComputer: ${computerPoints} point(s).`);
+        console.log(`Player: ${playerPoints} point(s).\n`);
+        console.log(`Computer: ${computerPoints} point(s).`);
         console.log("-------------------------------------------------\n");
     }
     console.clear();
     console.log(`---------------------!GAME OVER!---------------------\n`);
-    console.log(`Player: ${playerPoints} point(s).\nComputer: ${computerPoints} point(s).`);
+    console.log(`Player: ${playerPoints} point(s).\n`);
+    console.log(`Computer: ${computerPoints} point(s).`);
     if(playerPoints === computerPoints){
         console.log("It's a Draw.");
     } else if(playerPoints > computerPoints){
