@@ -46,5 +46,34 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    return;
+    let playerPoints = 0;
+    let computerPoints = 0;
+    for(let i = 0; i < 5; i++){
+        let playerChoice = prompt(`ROUND ${i + 1} : Rock/Paper/Scissors`, "rock");
+        let computerChoice = computerPlay();
+        let result = playRound(playerChoice, computerChoice);
+        switch(result.substr(4, 4)){
+            case "Win!":
+                playerPoints++;
+                break;
+            case "Lose":
+                computerPoints++;
+                break;
+        }
+        console.log(`---------------------ROUND ${i + 1}---------------------\n`);
+        console.log(result);
+        console.log(`Player: ${playerPoints} point(s).\nComputer: ${computerPoints} point(s).`);
+        console.log("-------------------------------------------------\n");
+    }
+    console.clear();
+    console.log(`---------------------!GAME OVER!---------------------\n`);
+    console.log(`Player: ${playerPoints} point(s).\nComputer: ${computerPoints} point(s).`);
+    if(playerPoints === computerPoints){
+        console.log("It's a Draw.");
+    } else if(playerPoints > computerPoints){
+        console.log("Congratulations, you win the game!");
+    } else {
+        console.log("Sorry, you lose the game...")
+    }
+    console.log("-------------------------------------------------\n");
 }
